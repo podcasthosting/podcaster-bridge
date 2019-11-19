@@ -1,0 +1,18 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+.podcaster-logo {
+    width: 200px;
+    height: auto;
+    margin: 25px 0;
+}
+
+.podcaster-plain-link {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.podcaster-plain-link:hover {
+    color: #aaa;
+}

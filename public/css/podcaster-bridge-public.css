@@ -1,0 +1,19 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.podcaster-episodes-header {
+    font-size: large;
+    font-family: "Courier New", "Courier", monospace;
+}
+.podcaster-no-posts,
+.podcaster-no-feeds {
+    color: #cccccc;
+}
+
+.podcaster-podcasts-list {
+    list-style-type: none;
+}
+
+.podcaster-podcasts-list-item {
+}

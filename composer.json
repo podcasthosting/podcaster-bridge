@@ -1,0 +1,21 @@
+{
+    "name": "podcasthosting/podcaster-bridge",
+    "description": "Easy access to podcaster data secured through OAuth",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Fabio Bacigalupo",
+            "email": "wordpress-plugin@podcaster.de"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/podcasthosting/podcaster-sdk"
+        }
+    ],
+    "require": {
+        "podcasthosting/podcaster-sdk": "dev-master"
+    }
+}
