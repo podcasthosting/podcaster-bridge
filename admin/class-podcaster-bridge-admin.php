@@ -276,7 +276,7 @@ class Podcaster_Bridge_Admin {
 
         $options = get_option('podcaster-bridge_options');
         // TODO: Remove apiUrl in live version
-        $podcaster = new \Podcaster\PodcasterAuthClient($options['oauth_clientid'], $options['oauth_password'], get_site_url() . '/wp-admin/admin-post.php?action=podcaster_oauth', 'http://api.podcaster.sattoaster');
+        $podcaster = new \Podcaster\PodcasterAuthClient($options['oauth_clientid'], $options['oauth_password'], get_site_url() . '/wp-admin/admin-post.php?action=podcaster_oauth');
         $podcaster->authorize();
         add_option('podcaster-bridge_options_oauth_token', $podcaster->getAccessToken()->getToken());
 
