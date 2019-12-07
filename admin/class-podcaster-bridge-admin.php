@@ -9,6 +9,10 @@
  * @subpackage Podcaster_Bridge/admin
  */
 
+function endsWith( $str, $sub ) {
+    return ( substr( $str, strlen( $str ) - strlen( $sub ) ) === $sub );
+}
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -17,7 +21,7 @@
  *
  * @package    Podcaster_Bridge
  * @subpackage Podcaster_Bridge/admin
- * @author     Fabio <bridge@podcaster.de>
+ * @author     Fabio <bridge@podcaster.de>, Aidan Lovelace <aidan@aidanlovelace.com>
  */
 class Podcaster_Bridge_Admin {
 
@@ -70,9 +74,22 @@ class Podcaster_Bridge_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+        
+		// Find required stylesheets from react asset manifest
+        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);        
+        $cssAssets = array_filter($assetManifest["files"], function($key) {
+            return endsWith($key, '.css');
+        }, ARRAY_FILTER_USE_KEY);
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/podcaster-bridge-admin.css', [], $this->version, 'all' );
-
+        foreach ($cssAssets as $name => $path) {
+            wp_enqueue_style(
+                $this->plugin_name . '-' . $name,
+                plugin_dir_url( __FILE__ ) . 'dist' . $path,
+                [],
+                $this->version,
+                'all'
+            );
+        }
 	}
 
 	/**
@@ -93,154 +110,80 @@ class Podcaster_Bridge_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/podcaster-bridge-admin.js', ['jquery'], $this->version, false );
+        // Find required scripts from react asset manifest
+        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);        
+        $jsAssets = array_filter($assetManifest["files"], function($key) {
+            return endsWith($key, '.js');
+        }, ARRAY_FILTER_USE_KEY);
 
+        foreach ($jsAssets as $name => $path) {
+            wp_enqueue_script(
+                $this->plugin_name . '-' . $name,
+                plugin_dir_url( __FILE__ ) . 'dist' . $path,
+                [],
+                $this->version,
+                true
+            );
+        }
 	}
 
 	public function add_menu() {
-
-        add_submenu_page(
-            'options-general.php',
-            __('service_page_title', 'podcaster-bridge'),
-            __('service_menu_title', 'podcaster-bridge'),
-            'manage_options',
-            plugin_dir_path(__FILE__) . 'partials/podcaster-bridge-admin-display.php'
-        );
+        add_options_page(
+			__( 'service_page_title', $this->plugin_slug ),
+			__( 'service_menu_title', $this->plugin_slug ),
+			'manage_options',
+			$this->plugin_slug,
+			array( $this, 'display_plugin_admin_page' )
+		);
     }
 
+    /**
+	 * Register the settings with Wordpress.
+	 *
+	 * @since    1.0.0
+	 */
 	public function add_setting() {
-
 	    register_setting(
             'podcaster_bridge',
 	        'podcaster-bridge_options'
         );
-
-        // register a new section in the "wporg" page
-        add_settings_section(
-            'podcaster-bridge_section_oauth',
-            __('service_section_oauth_header', 'podcaster-bridge'),
-            [$this, 'cb_section_oauth'],
-            'podcaster_bridge'
-        );
-
-        // register a new field
-        add_settings_field(
-            'podcaster-bridge_field_oauth_clientid', // as of WP 4.6 this value is used only internally
-            // use $args' label_for to populate the id inside the callback
-            __('service_field_oauth_clientid', 'podcaster-bridge'),
-            [$this, 'cb_field_oauth_clientid'],
-            'podcaster_bridge',
-            'podcaster-bridge_section_oauth',
-            [
-                'label_for' => 'oauth_clientid',
-                'class' => 'podcaster-bridge_row',
-                'podcaster-bridge_custom_data' => 'custom',
-            ]
-        );
-
-        // register a new field
-        add_settings_field(
-            'podcaster-bridge_field_oauth_password', // as of WP 4.6 this value is used only internally
-            // use $args' label_for to populate the id inside the callback
-            __('service_field_oauth_password', 'podcaster-bridge'),
-            [$this, 'cb_field_oauth_password'],
-            'podcaster_bridge',
-            'podcaster-bridge_section_oauth',
-            [
-                'label_for' => 'oauth_password',
-                'class' => 'podcaster-bridge_row',
-                'podcaster-bridge_custom_data' => 'custom',
-            ]
-        );
-
-        // register a new section in the "wporg" page
-        add_settings_section(
-            'podcaster-bridge_section_connection',
-            __('service_section_connection_header', 'podcaster-bridge'),
-            [$this, 'cb_section_connection'],
-            'podcaster_bridge'
-        );
-
-        // register a new field
-        add_settings_field(
-            'podcaster-bridge_connection_test', // as of WP 4.6 this value is used only internally
-            // use $args' label_for to populate the id inside the callback
-            //__('service_connection_test', 'podcaster-bridge'),
-            '',
-            [$this, 'cb_connection_test'],
-            'podcaster_bridge',
-            'podcaster-bridge_section_connection'
-        );
-
-        // register a new section in the "wporg" page
-        add_settings_section(
-            'podcaster-bridge_section_services',
-            __('service_section_services_header', 'podcaster-bridge'),
-            [$this, 'cb_section_services'],
-            'podcaster_bridge'
-        );
     }
-
-    public function cb_section_oauth($args) {
-
+    public function display_plugin_admin_page() {
+        // We include this script so we can tell the react app to use the correct url to import things like images
         ?>
-        <form action="options.php" method="post">
-
-        <p id="<?php echo esc_attr( $args['id'] ); ?>"><?php _e('service_section_oauth_description', 'podcaster-bridge'); ?></p>
-
+        <script>
+            window.podcasterBridgePluginDirectory = '<?php echo plugin_dir_url( __FILE__ ) . 'dist/'?>'
+        </script>
+        <div id="wp-reactivate-admin"></div>
         <?php
     }
-
-    public function cb_field_oauth_clientid($args) {
-
-        // get the value of the setting we've registered with register_setting()
-        $options = get_option('podcaster-bridge_options');
-        // output the field
-        ?>
-        <input type="text" value="<?php echo $options[ $args['label_for'] ]; ?>" name="podcaster-bridge_options[<?php echo esc_attr( $args['label_for'] ); ?>]" placeholder="<?php _e('service_field_oauth_clientid_placeholder', 'podcaster-bridge'); ?>" class="regular-text" required autofocus>
-        <p class="description">
-            <?php esc_html_e( 'service_field_oauth_clientid_description', 'podcaster-bridge'); ?>
-        </p>
-        <?php
+    
+    /**
+	 * Delete the stored OAuth Token
+	 *
+	 * @since    1.0.0
+	 */
+    public function cb_connection_delete() {
+	    return delete_option('podcaster-bridge_options_oauth_token');
     }
 
-    public function cb_field_oauth_password($args) {
-
-        // get the value of the setting we've registered with register_setting()
-        $options = get_option('podcaster-bridge_options');
-        // output the field
-        ?>
-        <input type="password" value="<?php echo $options[ $args['label_for'] ]; ?>" name="podcaster-bridge_options[<?php echo esc_attr( $args['label_for'] ); ?>]" placeholder="<?php _e('service_field_oauth_password_placeholder', 'podcaster-bridge'); ?>" class="regular-text" required>
-        <p class="description">
-            <?php esc_html_e( 'service_field_oauth_password_description', 'podcaster-bridge'); ?>
-        </p>
-            <div>
-                <div class="left">
-        <?php
-
-            // output save settings button
-            submit_button(__('button_save_settings', 'podcaster-bridge'));
-        ?>
-                </div>
-                <div class="right">
-                    <a href="<?php echo admin_url('admin-post.php');?>?action=cb_data_delete" id="podcaster_oauth_data_delete"><?php _e('button_delete_settings', 'podcaster-bridge'); ?></a>
-                </div>
-            </div>
-        </form>
-        <?php
+    /**
+	 * Delete the all the stored data.
+	 *
+	 * @since    1.0.0
+	 */
+    public function cb_data_delete() {
+	    return $this->cb_connection_delete() && delete_option('podcaster-bridge_options');
     }
 
-    public function cb_section_connection($args) {
 
-        ?>
-        <p>
-            <?php _e('service_hint_connection', 'podcaster-bridge'); ?>
-        </p>
-        <?php
-    }
-
+    /**
+	 * Test the connection to the Podcaster API
+     * and output an icon.
+	 *
+	 * @since    1.0.0
+	 */
     public function cb_connection_test() {
-
         $options = get_option('podcaster-bridge_options');
         $token = get_option('podcaster-bridge_options_oauth_token');
         if (empty($token)):
@@ -253,23 +196,6 @@ class Podcaster_Bridge_Admin {
             <span class="dashicons-before dashicons-yes"></span> <?php _e('service_oauth_connection_success', 'podcaster-bridge') ?> <a href="<?php echo admin_url('admin-post.php');?>?action=cb_connection_delete" id="podcaster_oauth_connection_delete" title="<?php _e('service_oauth_connection_delete', 'podcaster-bridge') ?>" class="podcaster-plain-link"><span class="dashicons dashicons-editor-unlink"></span> <?php _e('service_terminate_connection', 'podcaster-bridge'); ?></a>
         <?php
         endif;
-    }
-
-    public function cb_section_services($args) {
-
-        ?>
-        <p>
-            <?php _e('service_hint_services', 'podcaster-bridge'); ?>
-        </p>
-        <?php
-    }
-
-    public function cb_connection_delete() {
-	    return delete_option('podcaster-bridge_options_oauth_token');
-    }
-
-    public function cb_data_delete() {
-	    return $this->cb_connection_delete() && delete_option('podcaster-bridge_options');
     }
 
     public function podcaster_oauth() {
