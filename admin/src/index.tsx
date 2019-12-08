@@ -13,5 +13,10 @@ import './publicpath';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
+import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
+
+declare global {
+    interface Window { podcasterBridgePluginAdmin: PodcasterBridgePluginAdminData; }
+}
 
 ReactDOM.render(<Dashboard />, document.getElementById('wp-reactivate-admin'));

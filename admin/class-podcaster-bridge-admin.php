@@ -155,6 +155,29 @@ class Podcaster_Bridge_Admin {
     }
 
     /**
+	 * Pass the necessary data to Javascript.
+     * (hooked in admin_head)
+	 *
+	 * @since    2.0.0
+	 */
+    public function pass_data() {
+        $options = get_option('podcaster-bridge_options');
+
+        ?>
+        <script>
+        window.podcasterBridgePluginAdmin = {
+            ajaxUrl: <?php echo json_encode(admin_url("admin-ajax.php")) ?>,
+            ajaxNonce: <?php echo json_encode(wp_create_nonce("pbr_ajax_nonce")) ?>,
+            oauthClientCredentials: {
+                clientID: <?php echo json_encode($options['oauth_clientid']) ?>,
+                clientPassword: <?php echo json_encode($options['oauth_password']) ?>
+            }
+        };
+        </script>
+        <?php
+    }
+
+    /**
 	 * Render the plugin's admin area.
 	 *
 	 * @since    2.0.0
@@ -187,7 +210,6 @@ class Podcaster_Bridge_Admin {
 	    return $this->cb_connection_delete() && delete_option('podcaster-bridge_options');
     }
 
-
     /**
 	 * Test the connection to the Podcaster API
      * and output an icon.
@@ -197,20 +219,15 @@ class Podcaster_Bridge_Admin {
     public function cb_connection_test() {
         $options = get_option('podcaster-bridge_options');
         $token = get_option('podcaster-bridge_options_oauth_token');
-        if (empty($token)):
-	    ?>
-        <!--<button type="button" <?php /*echo ((empty($options['oauth_clientid']) || empty($options['oauth_password'])) ? 'disabled' : '');  */?> id="podcaster_oauth_connection_test"><span class="dashicons-before dashicons-warning"></span> <?php /*_e('service_oauth_button_connection_test', 'podcaster-bridge') */?></button>-->
-        <span class="dashicons-before dashicons-warning"></span> <a href="<?php echo admin_url('admin-post.php');?>?action=podcaster_oauth" onclick="window.open(this.href, 'oauth', 'width=300,height=400,left=100,top=200'); return false;"><?php _e('service_oauth_button_connection_test', 'podcaster-bridge') ?></a>
-        <?php
-        elseif (!(empty($options['oauth_clientid']) || empty($options['oauth_password']))):
-        ?>
-            <span class="dashicons-before dashicons-yes"></span> <?php _e('service_oauth_connection_success', 'podcaster-bridge') ?> <a href="<?php echo admin_url('admin-post.php');?>?action=cb_connection_delete" id="podcaster_oauth_connection_delete" title="<?php _e('service_oauth_connection_delete', 'podcaster-bridge') ?>" class="podcaster-plain-link"><span class="dashicons dashicons-editor-unlink"></span> <?php _e('service_terminate_connection', 'podcaster-bridge'); ?></a>
-        <?php
-        endif;
+        if (empty($token)) {
+            // Not Failure but we need to authenticate
+        } else if (!(empty($options['oauth_clientid']) || empty($options['oauth_password']))) {
+            // Success
+        }
     }
 
     /**
-	 * Retrieves the OAuth token.
+	 * Receive the OAuth token.
 	 *
 	 * @since    1.0.0
 	 */

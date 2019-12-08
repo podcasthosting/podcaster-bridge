@@ -158,6 +158,7 @@ class Podcaster_Bridge {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'add_setting' );
+		$this->loader->add_action( 'admin_head', $plugin_admin, 'pass_data' );
 		$this->loader->add_action( 'admin_post_podcaster_oauth', $plugin_admin, 'podcaster_oauth' );
 		$this->loader->add_action( 'wp_ajax_podcaster_oauth_connection_delete', $plugin_admin, 'cb_connection_delete' );
 		$this->loader->add_action( 'wp_ajax_podcaster_oauth_data_delete', $plugin_admin, 'cb_data_delete' );

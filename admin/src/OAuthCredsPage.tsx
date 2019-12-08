@@ -11,6 +11,7 @@
  */
 
 import * as React from 'react'
+import OAuthClientCredentials from './types/OAuthClientCredentials';
 
 /**
  * The OAuth 2 Credentials page component
@@ -24,18 +25,15 @@ import * as React from 'react'
  * @author     Aidan Lovelace <aidan@aidanlovelace.com>
  */
 type Props = {
-  clientID: string;
-  clientPassword: string;
+  clientCredentials: OAuthClientCredentials
   nextStep: Function;
 }
 interface State {
-  clientID: string;
-  clientPassword: string;
+  clientCredentials: OAuthClientCredentials
 };
 export default class OAuthCredsPage extends React.Component<Props, State> {
   state: State = {
-    clientID: this.props.clientID,
-    clientPassword: this.props.clientPassword
+    clientCredentials: this.props.clientCredentials
   };
   render() {
     return (
@@ -54,13 +52,16 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                 <td>
                   <input
                     type="text"
-                    defaultValue={this.state.clientID}
+                    defaultValue={this.state.clientCredentials.clientID}
                     name="podcaster-bridge_options[oauth_clientid]"
                     placeholder="Enter here the client id as shown in the service"
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
-                        clientID: event.target.value
+                        clientCredentials: {
+                          clientID: event.target.value,
+                          clientPassword: this.state.clientCredentials.clientPassword
+                        }
                       });
                     }}
                     required
@@ -77,13 +78,16 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                 <td>
                   <input
                     type="password"
-                    defaultValue={this.state.clientPassword}
+                    defaultValue={this.state.clientCredentials.clientPassword}
                     name="podcaster-bridge_options[oauth_password]"
                     placeholder="Enter your OAuth password"
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
-                        clientPassword: event.target.value
+                        clientCredentials: {
+                          clientID: this.state.clientCredentials.clientID,
+                          clientPassword: event.target.value
+                        }
                       });
                     }}
                     required />
