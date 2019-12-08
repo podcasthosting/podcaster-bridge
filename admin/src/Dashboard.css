@@ -1,3 +1,14 @@
+/**
+ * CSS for the admin pane
+ *
+ * @link       https://www.podcaster.de
+ * @since      1.0.0
+ *
+ * @package    Podcaster_Bridge
+ * @subpackage Podcaster_Bridge/admin
+ * @author     Fabio <bridge@podcaster.de>, Aidan Lovelace <aidan@aidanlovelace.com>
+ */
+ 
 .podcaster-logo {
     width: 200px;
     height: auto;

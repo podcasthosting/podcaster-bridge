@@ -2,6 +2,11 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Aidan Lovelace",
+    "email": "aidan@aidanlovelace.com",
+    "url": "https://aidanlovelace.com"
+  },
   "dependencies": {
     "@babel/core": "7.7.4",
     "@svgr/webpack": "4.3.3",

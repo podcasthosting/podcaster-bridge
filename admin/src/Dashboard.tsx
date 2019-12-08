@@ -1,8 +1,29 @@
+/**
+ * The root React component for the Settings menu
+ *
+ * @link       https://www.podcaster.de
+ * @since      2.0.0
+ *
+ * @package    Podcaster_Bridge
+ * @subpackage Podcaster_Bridge/admin
+ * @author     Aidan Lovelace <aidan@aidanlovelace.com>
+ */
+
 import * as React from 'react'
 //@ts-ignore
 import podcasterLogo from "./podcaster_logo.svg";
 import './Dashboard.css';
 
+/**
+ * The root React component for the Settings menu
+ *
+ * The wizard for logging into the user's
+ * podcaster.de account using OAuth 2.
+ *
+ * @package    Podcaster_Bridge
+ * @subpackage Podcaster_Bridge/admin
+ * @author     Aidan Lovelace <aidan@aidanlovelace.com>
+ */
 export const Dashboard: React.FunctionComponent<{}> = props => {
   return (
     <div className="wrap">
@@ -14,28 +35,30 @@ export const Dashboard: React.FunctionComponent<{}> = props => {
           Da get a client id  and a password for the form  <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">open this page on podcaster</a>.
             </p>
         <table className="form-table" role="presentation">
-          <tbody><tr className="podcaster-bridge_row">
-            <th scope="row">
-              <label htmlFor="oauth_clientid">Client ID</label>
-            </th>
-            <td>
-              <input
-                type="text"
-                defaultValue=''
-                name="podcaster-bridge_options[oauth_clientid]"
-                placeholder="Enter here the client id as shown in the service"
-                className="regular-text"
-                // onChange={this.updateInput}
-                required
-              />
-              <p className="description">
-                You have to create a client id through the podcaster API.
-                </p>
-            </td>
-          </tr>
-            <tr className="podcaster-bridge_row"><th scope="row">
-              <label htmlFor="oauth_password">Password</label>
-            </th>
+          <tbody>
+            <tr className="podcaster-bridge_row">
+              <th scope="row">
+                <label htmlFor="oauth_clientid">Client ID</label>
+              </th>
+              <td>
+                <input
+                  type="text"
+                  defaultValue=''
+                  name="podcaster-bridge_options[oauth_clientid]"
+                  placeholder="Enter here the client id as shown in the service"
+                  className="regular-text"
+                  // onChange={this.updateInput}
+                  required
+                />
+                <p className="description">
+                  You have to create a client id through the podcaster API.
+                  </p>
+              </td>
+            </tr>
+            <tr className="podcaster-bridge_row">
+              <th scope="row">
+                <label htmlFor="oauth_password">Password</label>
+              </th>
               <td>
                 <input type="password" defaultValue='' name="podcaster-bridge_options[oauth_password]" placeholder="Enter your OAuth password" className="regular-text" required />
                 <p className="description">
@@ -72,7 +95,7 @@ export const Dashboard: React.FunctionComponent<{}> = props => {
       <h2>3. Services</h2>
       <p>
         With the connection established can use the following services within your WordPress installation.
-          </p>
+      </p>
     </div>
   )
 }

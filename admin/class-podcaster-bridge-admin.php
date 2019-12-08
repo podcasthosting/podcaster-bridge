@@ -127,6 +127,11 @@ class Podcaster_Bridge_Admin {
         }
 	}
 
+    /**
+	 * Add the plugin specific menu to the admin area.
+	 *
+	 * @since    1.0.0
+	 */
 	public function add_menu() {
         add_options_page(
 			__( 'service_page_title', $this->plugin_slug ),
@@ -148,6 +153,12 @@ class Podcaster_Bridge_Admin {
 	        'podcaster-bridge_options'
         );
     }
+
+    /**
+	 * Render the plugin's admin area.
+	 *
+	 * @since    2.0.0
+	 */
     public function display_plugin_admin_page() {
         // We include this script so we can tell the react app to use the correct url to import things like images
         ?>
@@ -198,8 +209,12 @@ class Podcaster_Bridge_Admin {
         endif;
     }
 
+    /**
+	 * Retrieves the OAuth token.
+	 *
+	 * @since    1.0.0
+	 */
     public function podcaster_oauth() {
-
         $options = get_option('podcaster-bridge_options');
         // TODO: Remove apiUrl in live version
         $podcaster = new \Podcaster\PodcasterAuthClient($options['oauth_clientid'], $options['oauth_password'], get_site_url() . '/wp-admin/admin-post.php?action=podcaster_oauth');
