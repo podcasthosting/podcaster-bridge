@@ -41,29 +41,28 @@ export default class Dashboard extends React.Component<Props, State> {
     render() {
         return (
             <div className="wrap">
-                <h1>Podcaster.de Settings</h1>
+                <h1>Podcaster.de Settings</h1> {/* TODO: Localize */}
                 <img src={podcasterLogo} alt="podcaster.de Logo" className="podcaster-logo" />
-                <OAuthCredsPage nextStep={this.nextStep} clientCredentials={adminData.oauthClientCredentials} />
-                <h2>2. Connection</h2>
+                <OAuthCredsPage nextStep={this.nextStep} adminData={adminData} />
+                <h2>2. Connection</h2> {/* TODO: Localize */}
                 <p>
                     After you have entered and saved your data you can create a connection between this site and the podcaster service. Click the link "Establish connection" which is shown after entering your data.
-                </p>
+                </p> {/* TODO: Localize */}
                 <table className="form-table" role="presentation">
                     <tbody>
                         <tr>
                             <th scope="row" />
                             <td>
-                                {/*<button type="button"  id="podcaster_oauth_connection_test"><span class="dashicons-before dashicons-warning"></span> </button>*/}
                                 <span className="dashicons-before dashicons-warning" />
-                                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth">Establish connection</a>
+                                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth">Establish connection</a> {/* TODO: Localize */}
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <h2>3. Services</h2>
+                <h2>3. Services</h2> {/* TODO: Localize */}
                 <p>
                     With the connection established can use the following services within your WordPress installation.
-                </p>
+                </p> {/* TODO: Localize */}
             </div>
         )
     }

@@ -207,7 +207,7 @@ class Podcaster_Bridge_Admin {
 	 * @since    1.0.0
 	 */
     public function cb_data_delete() {
-	    return $this->cb_connection_delete() && delete_option('podcaster-bridge_options');
+	    return delete_option('podcaster-bridge_options') && $this->cb_connection_delete();
     }
 
     /**
@@ -224,6 +224,23 @@ class Podcaster_Bridge_Admin {
         } else if (!(empty($options['oauth_clientid']) || empty($options['oauth_password']))) {
             // Success
         }
+    }
+
+    /**
+	 * Save the OAuth client credentials from
+     * a POST request.
+	 *
+	 * @since    2.0.0
+	 */
+    public function ajax_save_credentials() {
+        $newClientID = $_POST["clientid"];
+        $newClientPassword = $_POST["clientpassword"];
+        update_option('podcaster-bridge_options', array(
+            'oauth_clientid' => $newClientID,
+            'oauth_password' => $newClientPassword
+        ));
+
+        wp_die();
     }
 
     /**
