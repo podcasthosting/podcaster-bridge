@@ -14,12 +14,13 @@ import * as React from 'react'
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
 import OAuthClientCredentials from './types/OAuthClientCredentials';
 import { objectToFormURLEncoded } from './utils';
+import __ from './TemporaryLocalize';
 
 /**
  * The OAuth 2 Credentials page component
  * for the Settings menu
  *
- * Page 1 of the wizard for logging into the
+ * Page 2 of the wizard for logging into the
  * user's podcaster.de account using OAuth 2.
  *
  * @package    Podcaster_Bridge
@@ -56,7 +57,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
     fetch(this.props.adminData.ajaxUrl, {
       method: 'POST',
       credentials: 'same-origin',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
       body: objectToFormURLEncoded(postData)
     }).then(res => {
       this.setState({
@@ -77,7 +78,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
     fetch(this.props.adminData.ajaxUrl, {
       method: 'POST',
       credentials: 'same-origin',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
       body: objectToFormURLEncoded(postData)
     }).then(res => {
       this.setState({
@@ -90,26 +91,35 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
     });
   }
 
+  // Checks if we can move to the next step by making
+  // sure the client credentials are not empty or null.
+  private canMoveOn(): boolean {
+    return !!this.state.clientCredentials.clientID
+      && !!this.state.clientCredentials.clientID.trim()
+      && !!this.state.clientCredentials.clientPassword
+      && !!this.state.clientCredentials.clientPassword.trim();
+  }
+
   render() {
     return (
       <div>
         <h2>1. OAuth Client Credentials</h2>
         <form action="options.php" method="post">
           <p id="podcaster-bridge_section_oauth">
-            Get the client id and the password from the form at <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">this page on podcaster</a>.
+            {__('client-id-and-password-text-pre-link')} <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">{__('client-id-and-password-text-link')}</a>.
           </p>
           <table className="form-table" role="presentation">
             <tbody>
               <tr className="podcaster-bridge_row">
                 <th scope="row">
-                  <label htmlFor="oauth_clientid">Client ID</label>
+                  <label htmlFor="oauth_clientid">{__('client-id-label')}</label>
                 </th>
                 <td>
                   <input
                     type="text"
-                    value={this.state.clientCredentials.clientID}
+                    value={this.state.clientCredentials.clientID || ""}
                     name="podcaster-bridge_options[oauth_clientid]"
-                    placeholder="Enter here the client id as shown in the service"
+                    placeholder={__('client-id-placeholder')}
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
@@ -123,20 +133,20 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                     required
                   />
                   <p className="description">
-                    You have to create a client id through the podcaster API.
+                    {__('client-id-desc')}
                   </p>
                 </td>
               </tr>
               <tr className="podcaster-bridge_row">
                 <th scope="row">
-                  <label htmlFor="oauth_password">Password</label>
+                  <label htmlFor="oauth_password">{__('client-password-label')}</label>
                 </th>
                 <td>
                   <input
                     type="password"
-                    value={this.state.clientCredentials.clientPassword}
+                    value={this.state.clientCredentials.clientPassword || ""}
                     name="podcaster-bridge_options[oauth_password]"
-                    placeholder="Enter your OAuth password"
+                    placeholder={__('client-password-placeholder')}
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
@@ -149,7 +159,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                     disabled={this.state.saving || this.state.deleting}
                     required />
                   <p className="description">
-                    This password is generated when creating a client id.
+                    {__('client-password-desc')}
                   </p>
                   <div>
                     <div className="left">
@@ -159,21 +169,24 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                           name="submit"
                           id="submit"
                           className="button button-primary"
-                          onClick={_ => this.saveCreds()}
-                          disabled={this.state.saving || this.state.deleting}>{!this.state.saving ? 'Save' : 'Saving...'}</button>
+                          onClick={event => {
+                            event.preventDefault();
+                            this.saveCreds();
+                          }}
+                          disabled={this.state.saving || this.state.deleting}>{!this.state.saving ? __('save-button') : __('saving-button')}</button>
                       </p>
                     </div>
                     <div className="right">
                       <button
-                          type="submit"
-                          name="delete"
-                          id="delete"
-                          className="button button-danger"
-                          onClick={event => {
-                            event.preventDefault();
-                            this.deleteCreds()
-                          }}
-                          disabled={this.state.saving || this.state.deleting}>{!this.state.deleting ? 'Delete' : 'Deleting...'}</button>
+                        type="submit"
+                        name="delete"
+                        id="delete"
+                        className="button button-danger"
+                        onClick={event => {
+                          event.preventDefault();
+                          this.deleteCreds()
+                        }}
+                        disabled={this.state.saving || this.state.deleting}>{!this.state.deleting ? __('delete-button') : __('deleting-button')}</button>
                     </div>
                   </div>
                 </td>
@@ -185,6 +198,10 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
           <input type="hidden" id="_wpnonce" name="_wpnonce" defaultValue="d67cd36f85" />
           <input type="hidden" name="_wp_http_referer" defaultValue="/wp-admin/options-general.php?page=podcaster-bridge/admin/partials/podcaster-bridge-admin-display.php" />
         </form>
+        <button
+          className="button button-primary"
+          onClick={_ => this.props.nextStep()}
+          disabled={!this.canMoveOn()}>{__('next-button')}</button>
       </div>
     );
   }

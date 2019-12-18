@@ -16,6 +16,11 @@ import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminDa
 import podcasterLogo from './podcaster_logo.svg';
 import './Dashboard.css';
 
+import EstablishConnectionPage from './EstablishConnectionPage';
+import ServicesListPage from './ServicesListPage';
+import WelcomePage from './WelcomePage';
+import __ from './TemporaryLocalize';
+
 // Get the data passed from wordpress to React
 const adminData: PodcasterBridgePluginAdminData = window.podcasterBridgePluginAdmin;
 
@@ -27,43 +32,48 @@ const adminData: PodcasterBridgePluginAdminData = window.podcasterBridgePluginAd
  */
 type Props = {}
 interface State {
-    page: number;
+  page: number;
 };
 export default class Dashboard extends React.Component<Props, State> {
-    state: State = {
-        page: 0
-    };
+  state: State = {
+    page: 0
+  };
 
-    nextStep() {
-        
-    }
+  nextStep() {
+    if (this.state.page < 3)
+      this.setState({
+        page: this.state.page + 1
+      });
+  }
 
-    render() {
-        return (
-            <div className="wrap">
-                <h1>Podcaster.de Settings</h1> {/* TODO: Localize */}
-                <img src={podcasterLogo} alt="podcaster.de Logo" className="podcaster-logo" />
-                <OAuthCredsPage nextStep={this.nextStep} adminData={adminData} />
-                <h2>2. Connection</h2> {/* TODO: Localize */}
-                <p>
-                    After you have entered and saved your data you can create a connection between this site and the podcaster service. Click the link "Establish connection" which is shown after entering your data.
-                </p> {/* TODO: Localize */}
-                <table className="form-table" role="presentation">
-                    <tbody>
-                        <tr>
-                            <th scope="row" />
-                            <td>
-                                <span className="dashicons-before dashicons-warning" />
-                                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth">Establish connection</a> {/* TODO: Localize */}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h2>3. Services</h2> {/* TODO: Localize */}
-                <p>
-                    With the connection established can use the following services within your WordPress installation.
-                </p> {/* TODO: Localize */}
-            </div>
-        )
+  render() {
+    let pageComp;
+    switch (this.state.page) {
+      case 0:
+        pageComp = <WelcomePage nextStep={this.nextStep.bind(this)} />
+        break;
+      case 1:
+        pageComp = <OAuthCredsPage nextStep={this.nextStep.bind(this)} adminData={adminData} />;
+        break;
+      case 2:
+        pageComp = <EstablishConnectionPage nextStep={this.nextStep.bind(this)} />;
+        break;
+      case 3:
+        pageComp = <ServicesListPage nextStep={this.nextStep.bind(this)} adminData={adminData} />;
+        break;
+      default:
+        this.setState({
+          page: 0
+        });
+        pageComp = <WelcomePage nextStep={this.nextStep.bind(this)} />;
+        break;
     }
+    return (
+      <div className="wrap">
+        <h1>{__('settings-header')}</h1>
+        <img src={podcasterLogo} alt="podcaster.de Logo" className="podcaster-logo" />
+        {pageComp}
+      </div>
+    )
+  }
 }

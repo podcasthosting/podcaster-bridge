@@ -1,4 +1,4 @@
 export default interface OAuthClientCredentials {
-    clientID: string;
-    clientPassword: string;
+  clientID: string;
+  clientPassword: string;
 }
