@@ -10,16 +10,16 @@
  */
 
 import * as React from 'react'
-import OAuthCredsPage from './OAuthCredsPage';
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
 //@ts-ignore
 import podcasterLogo from './podcaster_logo.svg';
 import './Dashboard.css';
+import __ from './TemporaryLocalize';
 
+import WelcomePage from './WelcomePage';
+import OAuthCredsPage from './OAuthCredsPage';
 import EstablishConnectionPage from './EstablishConnectionPage';
 import ServicesListPage from './ServicesListPage';
-import WelcomePage from './WelcomePage';
-import __ from './TemporaryLocalize';
 
 // Get the data passed from wordpress to React
 const adminData: PodcasterBridgePluginAdminData = window.podcasterBridgePluginAdmin;
@@ -36,13 +36,31 @@ interface State {
 };
 export default class Dashboard extends React.Component<Props, State> {
   state: State = {
-    page: 0
+    page: ((): number => {
+      // If the client creds are not empty
+      if (!!adminData.oauthClientCredentials.clientID
+        && !!adminData.oauthClientCredentials.clientID.trim()
+        && !!adminData.oauthClientCredentials.clientPassword
+        && !!adminData.oauthClientCredentials.clientPassword.trim()) {
+
+        if (!!adminData.oauthAccessToken && !!adminData.oauthAccessToken.trim())
+          return 3;
+        return 2;
+      } else      
+        return 0;
+    })()
   };
 
   nextStep() {
     if (this.state.page < 3)
       this.setState({
         page: this.state.page + 1
+      });
+  }
+  prevStep() {
+    if (this.state.page > 0)
+      this.setState({
+        page: this.state.page - 1
       });
   }
 
@@ -56,10 +74,10 @@ export default class Dashboard extends React.Component<Props, State> {
         pageComp = <OAuthCredsPage nextStep={this.nextStep.bind(this)} adminData={adminData} />;
         break;
       case 2:
-        pageComp = <EstablishConnectionPage nextStep={this.nextStep.bind(this)} />;
+        pageComp = <EstablishConnectionPage prevStep={this.prevStep.bind(this)} adminData={adminData} nextStep={this.nextStep.bind(this)} />;
         break;
       case 3:
-        pageComp = <ServicesListPage nextStep={this.nextStep.bind(this)} adminData={adminData} />;
+        pageComp = <ServicesListPage prevStep={this.prevStep.bind(this)} adminData={adminData} />;
         break;
       default:
         this.setState({

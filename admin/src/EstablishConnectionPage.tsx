@@ -12,6 +12,7 @@
 
 import * as React from 'react'
 import __ from './TemporaryLocalize';
+import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
 
 /**
  * The page where the user can establish the
@@ -25,6 +26,8 @@ import __ from './TemporaryLocalize';
  * @author     Aidan Lovelace <aidan@aidanlovelace.com>
  */
 type Props = {
+  prevStep: Function;
+  adminData: PodcasterBridgePluginAdminData;
   nextStep: Function;
 }
 interface State { };

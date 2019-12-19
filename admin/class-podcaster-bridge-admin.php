@@ -171,7 +171,8 @@ class Podcaster_Bridge_Admin {
             oauthClientCredentials: {
                 clientID: <?php echo json_encode($options['oauth_clientid']) ?>,
                 clientPassword: <?php echo json_encode($options['oauth_password']) ?>
-            }
+			},
+			oauthAccessToken: <?php echo json_encode(get_option('podcaster-bridge_options_oauth_token')) ?>
         };
         </script>
         <?php
@@ -249,7 +250,7 @@ class Podcaster_Bridge_Admin {
 	 * @since    1.0.0
 	 */
     public function podcaster_oauth() {
-        $options = get_option('podcaster-bridge_options');
+		$options = get_option('podcaster-bridge_options');
         // TODO: Remove apiUrl in live version
         $podcaster = new \Podcaster\PodcasterAuthClient($options['oauth_clientid'], $options['oauth_password'], get_site_url() . '/wp-admin/admin-post.php?action=podcaster_oauth');
         $podcaster->authorize();

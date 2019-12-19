@@ -28,7 +28,7 @@ import __ from './TemporaryLocalize';
  */
 type Props = {
   adminData: PodcasterBridgePluginAdminData
-  nextStep: Function;
+  prevStep: Function;
 }
 interface State { };
 export default class ServicesListPage extends React.Component<Props, State> {
@@ -39,6 +39,9 @@ export default class ServicesListPage extends React.Component<Props, State> {
         <p>
           {__('services-paragraph')}
         </p>
+        <button
+          className="button button-primary"
+          onClick={_ => this.props.prevStep()}>{__('back-button')}</button>
       </div>
     );
   }

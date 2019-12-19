@@ -3,6 +3,7 @@
 const strings: { [key: string]: string; } = {
   // All Pages
   'next-button': 'Next',
+  'back-button': 'Back',
   'settings-header': 'Podcaster.de Settings',
 
   // Welcome Page
