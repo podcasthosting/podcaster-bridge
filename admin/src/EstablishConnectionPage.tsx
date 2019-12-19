@@ -53,9 +53,10 @@ export default class EstablishConnectionPage extends React.Component<Props, Stat
           </tbody>
         </table>
         <button
-          type="submit"
-          name="submit"
-          id="submit"
+          className="button button-primary"
+          onClick={_ => this.props.prevStep()}>{__('back-button')}</button>
+        {" "}
+        <button
           className="button button-primary"
           onClick={_ => this.props.nextStep()}>{__('next-button')}</button>
       </div>
