@@ -103,7 +103,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h2>1. OAuth Client Credentials</h2>
+        <h2>{__('credentials-header')}</h2>
         <form action="options.php" method="post">
           <p id="podcaster-bridge_section_oauth">
             {__('client-id-and-password-text-pre-link')} <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">{__('client-id-and-password-text-link')}</a>.

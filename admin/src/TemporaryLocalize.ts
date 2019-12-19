@@ -11,6 +11,7 @@ const strings: { [key: string]: string; } = {
   'get-started': 'Get Started',
 
   // Credentials Page
+  'credentials-header': 'OAuth Client Credentials',
   'client-id-and-password-text-pre-link': 'Get the client id and the password from the form at',
   'client-id-and-password-text-link': 'this page on podcaster',
 
