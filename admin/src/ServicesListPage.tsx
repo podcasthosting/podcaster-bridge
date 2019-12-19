@@ -12,8 +12,6 @@
 
 import * as React from 'react'
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
-import OAuthClientCredentials from './types/OAuthClientCredentials';
-import { objectToFormURLEncoded } from './utils';
 import __ from './TemporaryLocalize';
 
 /**

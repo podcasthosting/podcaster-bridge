@@ -63,6 +63,12 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
       this.setState({
         saving: false
       });
+      this.props.adminData.oauthClientCredentials = this.state.clientCredentials;
+    }).catch(_ => {
+      this.setState({
+        saving: false,
+        clientCredentials: this.props.adminData.oauthClientCredentials
+      });
     });
   }
 
