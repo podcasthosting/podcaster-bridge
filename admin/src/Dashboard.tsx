@@ -20,6 +20,7 @@ import WelcomePage from './WelcomePage';
 import OAuthCredsPage from './OAuthCredsPage';
 import EstablishConnectionPage from './EstablishConnectionPage';
 import ServicesListPage from './ServicesListPage';
+import { oauthClientCredsEmpty } from './types/OAuthClientCredentials';
 
 // Get the data passed from wordpress to React
 const adminData: PodcasterBridgePluginAdminData = window.podcasterBridgePluginAdmin;
@@ -37,17 +38,17 @@ interface State {
 export default class Dashboard extends React.Component<Props, State> {
   state: State = {
     page: ((): number => {
-      // If the client creds are not empty
-      if (!!adminData.oauthClientCredentials.clientID
-        && !!adminData.oauthClientCredentials.clientID.trim()
-        && !!adminData.oauthClientCredentials.clientPassword
-        && !!adminData.oauthClientCredentials.clientPassword.trim()) {
+      // If the oauthClientCredentials are not empty
+      if (!oauthClientCredsEmpty(adminData.oauthClientCredentials)) {
 
-        if (!!adminData.oauthAccessToken && !!adminData.oauthAccessToken.trim())
-          return 3;
-        return 2;
-      } else      
-        return 0;
+        // If there is an access token
+        if (!!adminData.oauthAccessToken?.trim())
+          return 3; // ServicesListPage
+
+        return 2; // EstablishConnectionPage
+
+      } else return 0; // WelcomePage
+      
     })()
   };
 
@@ -68,7 +69,7 @@ export default class Dashboard extends React.Component<Props, State> {
     let pageComp;
     switch (this.state.page) {
       case 0:
-        pageComp = <WelcomePage nextStep={this.nextStep.bind(this)} />
+        pageComp = <WelcomePage nextStep={this.nextStep.bind(this)} />;
         break;
       case 1:
         pageComp = <OAuthCredsPage nextStep={this.nextStep.bind(this)} adminData={adminData} />;

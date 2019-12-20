@@ -4,5 +4,5 @@ export default interface PodcasterBridgePluginAdminData {
   ajaxUrl: string;
   ajaxNonce: string;
   oauthClientCredentials: OAuthClientCredentials;
-  oauthAccessToken: string;
+  oauthAccessToken?: string;
 }
