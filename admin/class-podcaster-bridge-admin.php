@@ -120,7 +120,7 @@ class Podcaster_Bridge_Admin {
             wp_enqueue_script(
                 $this->plugin_name . '-' . $name,
                 plugin_dir_url( __FILE__ ) . 'dist' . $path,
-                [],
+                array( 'wp-i18n' ),
                 $this->version,
                 true
             );

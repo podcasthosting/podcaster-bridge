@@ -14,7 +14,8 @@ import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminDa
 //@ts-ignore
 import podcasterLogo from './podcaster_logo.svg';
 import './Dashboard.css';
-import __ from './TemporaryLocalize';
+// import __ from './TemporaryLocalize';
+import { __ } from '@wordpress/i18n';
 
 import WelcomePage from './WelcomePage';
 import OAuthCredsPage from './OAuthCredsPage';
