@@ -1,4 +1,3 @@
 RewriteEngine On
 
-# block everything except /folder/public/
 RewriteRule !^dist/ - [F,NC]
