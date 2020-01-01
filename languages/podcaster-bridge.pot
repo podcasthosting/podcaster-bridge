@@ -9,130 +9,122 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-01T21:54:57+00:00\n"
+"POT-Creation-Date: 2020-01-01T23:55:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: podcaster-bridge\n"
 
-#: src/Dashboard.tsx:93
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/Dashboard.tsx:92
 msgid "settings-header"
 msgstr ""
 
 #: src/EstablishConnectionPage.tsx:40
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "establish-connection-header"
 msgstr ""
 
 #: src/EstablishConnectionPage.tsx:42
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "establish-connection-paragraph"
 msgstr ""
 
 #: src/EstablishConnectionPage.tsx:50
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "establish-connection-link-text"
 msgstr ""
 
 #: src/EstablishConnectionPage.tsx:57
-#: src/ServicesListPage.tsx:54
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/ServicesListPage.tsx:55
 msgid "back-button"
 msgstr ""
 
 #: src/EstablishConnectionPage.tsx:61
 #: src/OAuthCredsPage.tsx:210
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "next-button"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:112
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "credentials-header"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:115
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-id-and-password-text-pre-link"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:115
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-id-and-password-text-link"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:121
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-id-label"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:128
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-id-placeholder"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:142
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-id-desc"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:148
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-password-label"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:155
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-password-placeholder"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:168
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "client-password-desc"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:182
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "save-button"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:182
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "saving-button"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:195
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "delete-button"
 msgstr ""
 
 #: src/OAuthCredsPage.tsx:195
-#: admin/dist/static/js/main.4079f236.chunk.js:1
 msgid "deleting-button"
 msgstr ""
 
-#: src/ServicesListPage.tsx:42
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/ServicesListPage.tsx:43
 msgid "services-header"
 msgstr ""
 
-#: src/ServicesListPage.tsx:44
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/ServicesListPage.tsx:45
 msgid "services-paragraph"
 msgstr ""
 
-#: src/WelcomePage.tsx:34
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/ServicesListPage.tsx:48
+msgid "User information"
+msgstr ""
+
+#: src/ServicesListPage.tsx:49
+msgid "Stored files"
+msgstr ""
+
+#: src/ServicesListPage.tsx:50
+msgid "Feeds"
+msgstr ""
+
+#: src/ServicesListPage.tsx:51
+msgid "Shows"
+msgstr ""
+
+#: src/WelcomePage.tsx:35
 msgid "welcome-header"
 msgstr ""
 
-#: src/WelcomePage.tsx:36
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/WelcomePage.tsx:37
 msgid "welcome-paragraph"
 msgstr ""
 
-#: src/WelcomePage.tsx:40
-#: admin/dist/static/js/main.4079f236.chunk.js:1
+#: src/WelcomePage.tsx:41
 msgid "get-started"
 msgstr ""
 
