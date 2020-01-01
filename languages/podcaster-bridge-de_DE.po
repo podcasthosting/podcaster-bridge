@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/podcaster-bridge\n"
-"POT-Creation-Date: 2019-04-05 16:45:22+00:00\n"
-"PO-Revision-Date: 2019-04-05 19:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-04-05 16:45:22+00:00\n"
+"PO-Revision-Date: 2019-04-05 19:03+0200\n"
+"Language: de_DE\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -47,10 +47,7 @@ msgstr "3. Dienste"
 
 #: admin/class-podcaster-bridge-admin.php:189
 msgid "service_section_oauth_description"
-msgstr ""
-"Um eine Client-ID und das Passwort für das Formular zu erhalten,  <a href="
-"\"https://www.podcaster.de/apps\" title=\"Schlüsselverwaltung bei podcaster"
-"\" class=\"externalLink\">rufe diese Seite bei podcaster auf</a>. "
+msgstr "Um eine Client-ID und das Passwort für das Formular zu erhalten,  <a href=\"https://www.podcaster.de/apps\" title=\"Schlüsselverwaltung bei podcaster\" class=\"externalLink\">rufe diese Seite bei podcaster auf</a>. "
 
 #: admin/class-podcaster-bridge-admin.php:200
 msgid "service_field_oauth_clientid_placeholder"
@@ -78,11 +75,7 @@ msgstr "Daten löschen"
 
 #: admin/class-podcaster-bridge-admin.php:231
 msgid "service_hint_connection"
-msgstr ""
-"Nachdem Du die Daten in das Formular übernommen hast, kannst Du eine "
-"Verbindung zwischen dem Blog und dem podcaster Service aufbauen. Klicke "
-"dafür auf den Link \"Verbindung herstellen\", der nach der Eingabe der Daten "
-"erscheint."
+msgstr "Nachdem Du die Daten in das Formular übernommen hast, kannst Du eine Verbindung zwischen dem Blog und dem podcaster Service aufbauen. Klicke dafür auf den Link \"Verbindung herstellen\", der nach der Eingabe der Daten erscheint."
 
 #: admin/class-podcaster-bridge-admin.php:243
 msgid "service_oauth_button_connection_test"
@@ -102,9 +95,7 @@ msgstr "Trennen"
 
 #: admin/class-podcaster-bridge-admin.php:256
 msgid "service_hint_services"
-msgstr ""
-"Nachdem Du die Verbindung hergestellt hast, kannst Du folgende Dienste "
-"innerhalb Deiner WordPress Installation nutzen."
+msgstr "Nachdem Du die Verbindung hergestellt hast, kannst Du folgende Dienste innerhalb Deiner WordPress Installation nutzen."
 
 #. Plugin Name of the plugin/theme
 msgid "Podcaster Bridge"
@@ -115,9 +106,7 @@ msgid "https://github.com/podcasthosting/podcaster-bridge"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid ""
-"Connects a customer to its podcaster account to access data in a WordPress "
-"installation."
+msgid "Connects a customer to its podcaster account to access data in a WordPress installation."
 msgstr ""
 
 #. Author of the plugin/theme
