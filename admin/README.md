@@ -31,6 +31,6 @@ Now, our translations for the React application are in the plugin's pot file.
 
 For each language, we need to generate the json file for Javascript to use the translations. Replace the en_US with whichever language code you are translating to.
 ```
-npx po2json podcaster-bridge-en_US.po podcaster-bridge-en_US-main.js.json -f jed
+npx po2json languages/podcaster-bridge-en_US.po languages/podcaster-bridge-en_US-main.js.json -f jed
 ```
 
