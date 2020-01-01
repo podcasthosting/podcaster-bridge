@@ -89,3 +89,8 @@ export interface i18n_type {
 
 export let i18n: i18n_type = window.wp.i18n;
 
+export let __ = i18n.__;
+export let _x = i18n._x;
+export let _n = i18n._n;
+export let _nx = i18n._nx;
+export let sprintf = i18n.sprintf;

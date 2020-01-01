@@ -11,7 +11,7 @@
  */
 
 import * as React from 'react';
-import { i18n } from "./i18n";
+import { __ } from "./i18n";
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
 
 /**
@@ -37,9 +37,9 @@ export default class EstablishConnectionPage extends React.Component<Props, Stat
   render() {
     return (
       <div>
-        <h2>{i18n.__('establish-connection-header', 'podcaster-bridge')}</h2>
+        <h2>{__('establish-connection-header', 'podcaster-bridge')}</h2>
         <p>
-          {i18n.__('establish-connection-paragraph', 'podcaster-bridge')}
+          {__('establish-connection-paragraph', 'podcaster-bridge')}
         </p>
         <table className="form-table" role="presentation">
           <tbody>
@@ -47,18 +47,18 @@ export default class EstablishConnectionPage extends React.Component<Props, Stat
               <th scope="row" />
               <td>
                 <span className="dashicons-before dashicons-warning" />
-                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth">{i18n.__('establish-connection-link-text', 'podcaster-bridge')}</a>
+                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth" target="_blank">{__('establish-connection-link-text', 'podcaster-bridge')}</a>
               </td>
             </tr>
           </tbody>
         </table>
         <button
           className="button button-primary"
-          onClick={_ => this.props.prevStep()}>{i18n.__('back-button', 'podcaster-bridge')}</button>
+          onClick={_ => this.props.prevStep()}>{__('back-button', 'podcaster-bridge')}</button>
         {" "}
         <button
           className="button button-primary"
-          onClick={_ => this.props.nextStep()}>{i18n.__('next-button', 'podcaster-bridge')}</button>
+          onClick={_ => this.props.nextStep()}>{__('next-button', 'podcaster-bridge')}</button>
       </div>
     );
   }

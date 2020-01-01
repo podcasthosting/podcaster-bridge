@@ -12,7 +12,7 @@
 
 import * as React from 'react';
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
-import { i18n } from "./i18n";
+import { __ } from "./i18n";
 
 /**
  * The page that shows the available services
@@ -40,19 +40,19 @@ export default class ServicesListPage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h2>{i18n.__('services-header', 'podcaster-bridge')}</h2>
+        <h2>{__('services-header', 'podcaster-bridge')}</h2>
         <p>
-          {i18n.__('services-paragraph', 'podcaster-bridge')}
+          {__('services-paragraph', 'podcaster-bridge')}
         </p>
         <ul>
-          <li><span className="dashicons dashicons-admin-users"></span> User information</li>
-          <li><span className="dashicons dashicons-category"></span> Stored files</li>
-          <li><span className="dashicons dashicons-rss"></span> Feeds</li>
-          <li><span className="dashicons dashicons-microphone"></span> Shows</li>
+          <li><span className="dashicons dashicons-admin-users"></span> {__('User information', 'podcaster-bridge')}</li>
+          <li><span className="dashicons dashicons-category"></span> {__('Stored files', 'podcaster-bridge')}</li>
+          <li><span className="dashicons dashicons-rss"></span> {__('Feeds', 'podcaster-bridge')}</li>
+          <li><span className="dashicons dashicons-microphone"></span> {__('Shows', 'podcaster-bridge')}</li>
         </ul>
         <button
           className="button button-primary"
-          onClick={_ => this.props.prevStep()}>{i18n.__('back-button', 'podcaster-bridge')}</button>
+          onClick={_ => this.props.prevStep()}>{__('back-button', 'podcaster-bridge')}</button>
       </div>
     );
   }
