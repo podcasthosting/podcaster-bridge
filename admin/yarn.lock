@@ -1272,31 +1272,6 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@tannin/compile@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@tannin/compile/-/compile-1.0.4.tgz#85dff5b6b1008dcfc79a06cc86698bd9e98ff60b"
-  integrity sha512-RVfzknkrDTgtLhFSEaoGGIjpQsOzS75lzsf6v3IHP+sThoJ4qL2iQDopGo36OYeb6EzJMSKVGhsrTvqE/a1IpQ==
-  dependencies:
-    "@tannin/evaluate" "^1.1.2"
-    "@tannin/postfix" "^1.0.3"
-
-"@tannin/evaluate@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@tannin/evaluate/-/evaluate-1.1.2.tgz#37741ba6abc043a1f32a4156760989cf94b2481e"
-  integrity sha512-ME/CNm9zpCqJwTZa1WUpWp51lY5IpJcsFgsNouPsgApI5D1Vr/sR/zPAQEyS8ruk45YUoFqP82VIGIhQFrhYKQ==
-
-"@tannin/plural-forms@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@tannin/plural-forms/-/plural-forms-1.0.4.tgz#f7da122e92f93255eb5c8f096fd48bc308ae6f23"
-  integrity sha512-NSlGvF6q2OLXWWDLgzZRM2+L1uLBxl5wgxfmi9ZZUpZjlg+Z7Ss/QbAJpAJGxgvERuA1jhqpAuTvr/2fNbH+Ag==
-  dependencies:
-    "@tannin/compile" "^1.0.4"
-
-"@tannin/postfix@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@tannin/postfix/-/postfix-1.0.3.tgz#f8388e8f5add62dbec3d503127eeef19fedc1fcc"
-  integrity sha512-80uoGtphTH3vDZlJgE2xJh3qBWMAlCXq8wN8WLOxHJjms0A38vkbXOXiYMIabgnIJVc1vCcZVQa2pHt+X3AF5Q==
-
 "@testing-library/dom@^6.11.0":
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-6.11.0.tgz#962a38f1a721fdb7c9e35e7579e33ff13a00eda4"
@@ -1474,11 +1449,6 @@
   dependencies:
     "@types/react-dom" "*"
     "@types/testing-library__dom" "*"
-
-"@types/wordpress__i18n@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@types/wordpress__i18n/-/wordpress__i18n-3.4.0.tgz#b111f331895bcdfadd5ae4391546875501a93523"
-  integrity sha512-YD/Zh/rof9gAypXXKpfKHOe8w4+deohqwC04q9dt01AyZwSviOFY8mfpa+0gR4t1eyZiYKI8g/Gv6D2ccmYs9g==
 
 "@types/yargs-parser@*":
   version "13.1.0"
@@ -1681,17 +1651,14 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wordpress/i18n@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/i18n/-/i18n-3.7.0.tgz#b64997868fa2653477e0629ba44754cbce49453c"
-  integrity sha512-yavu3yAKbSkEosQvEd0lCa064SdFFb8i6f7RfZGDq/TQfJHBaJQvRA4Hd/CtrOXqS6DLjw2rLNrVG4XcJFss1A==
+"@wordpress/babel-plugin-makepot@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-makepot/-/babel-plugin-makepot-3.3.0.tgz#98a23352ae145cc81f0725ff5287572e0bb6b669"
+  integrity sha512-SjZ676Qc4KgcrtRCK4O1M2RctRrGsiV3LMMkBAw1z1uWhUTqQczMiuLk904dop9gXFlq9Mo06N2SQL7j7dUBcg==
   dependencies:
     "@babel/runtime" "^7.4.4"
     gettext-parser "^1.3.1"
     lodash "^4.17.15"
-    memize "^1.0.5"
-    sprintf-js "^1.1.1"
-    tannin "^1.1.0"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -6368,11 +6335,6 @@ mem@^4.0.0:
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
 
-memize@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/memize/-/memize-1.0.5.tgz#51d89e8407643dbc8cab98c6d56b889f9a3954e3"
-  integrity sha512-Dm8Jhb5kiC4+ynYsVR4QDXKt+o2dfqGuY4hE2x+XlXZkdndlT80bJxfcMv5QGp/FCy6MhG7f5ElpmKPFKOSEpg==
-
 memory-fs@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
@@ -9215,11 +9177,6 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-sprintf-js@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.2.tgz#da1765262bf8c0f571749f2ad6c26300207ae673"
-  integrity sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==
-
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -9542,13 +9499,6 @@ table@^5.2.3:
     lodash "^4.17.14"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
-
-tannin@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tannin/-/tannin-1.1.1.tgz#30daccac26b43200fa0a65a36391274ecfc67d6c"
-  integrity sha512-e6qNtx1XZnvC3psLnvboUekSY4phq77YDnDDhE/nqghpTVz2MbrsrN0M1dysof/WfkcSvnRVZyR8NYu5KcFtQw==
-  dependencies:
-    "@tannin/plural-forms" "^1.0.4"
 
 tapable@^1.0.0, tapable@^1.1.0, tapable@^1.1.3:
   version "1.1.3"

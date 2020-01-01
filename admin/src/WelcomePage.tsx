@@ -10,8 +10,8 @@
  * @author     Aidan Lovelace <aidan@aidanlovelace.com>
  */
 
-import * as React from 'react'
-import __ from './TemporaryLocalize';
+import * as React from 'react';
+import { i18n } from "./i18n";
 
 /**
  * The introduction page for the OAuth login
@@ -32,13 +32,13 @@ export default class WelcomePage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h2>{__('welcome-header')}</h2>
+        <h2>{i18n.__('welcome-header', 'podcaster-bridge')}</h2>
         <p>
-          {__('welcome-paragraph')}
+          {i18n.__('welcome-paragraph', 'podcaster-bridge')}
         </p>
         <button
           className="button button-primary"
-          onClick={_ => this.props.nextStep()}>{__('get-started')}</button>
+          onClick={_ => this.props.nextStep()}>{i18n.__('get-started', 'podcaster-bridge')}</button>
       </div>
     );
   }

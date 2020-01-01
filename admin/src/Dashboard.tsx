@@ -14,8 +14,7 @@ import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminDa
 //@ts-ignore
 import podcasterLogo from './podcaster_logo.svg';
 import './Dashboard.css';
-// import __ from './TemporaryLocalize';
-import { __ } from '@wordpress/i18n';
+import { i18n } from "./i18n";
 
 import WelcomePage from './WelcomePage';
 import OAuthCredsPage from './OAuthCredsPage';
@@ -90,7 +89,7 @@ export default class Dashboard extends React.Component<Props, State> {
     }
     return (
       <div className="wrap">
-        <h1>{__('settings-header')}</h1>
+        <h1>{i18n.__('settings-header', 'podcaster-bridge')}</h1>
         <img src={podcasterLogo} alt="podcaster.de Logo" className="podcaster-logo" />
         {pageComp}
       </div>

@@ -14,7 +14,7 @@ import * as React from 'react'
 import PodcasterBridgePluginAdminData from './types/PodcasterBridgePluginAdminData';
 import OAuthClientCredentials from './types/OAuthClientCredentials';
 import { objectToFormURLEncoded } from './utils';
-import __ from './TemporaryLocalize';
+import { i18n } from "./i18n";
 
 /**
  * The OAuth 2 Credentials page component
@@ -109,23 +109,23 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h2>{__('credentials-header')}</h2>
+        <h2>{i18n.__('credentials-header', 'podcaster-bridge')}</h2>
         <form action="options.php" method="post">
           <p id="podcaster-bridge_section_oauth">
-            {__('client-id-and-password-text-pre-link')} <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">{__('client-id-and-password-text-link')}</a>.
+            {i18n.__('client-id-and-password-text-pre-link', 'podcaster-bridge')} <a href="https://www.podcaster.de/apps" title="Key management at podcaster" className="externalLink">{i18n.__('client-id-and-password-text-link', 'podcaster-bridge')}</a>.
           </p>
           <table className="form-table" role="presentation">
             <tbody>
               <tr className="podcaster-bridge_row">
                 <th scope="row">
-                  <label htmlFor="oauth_clientid">{__('client-id-label')}</label>
+                  <label htmlFor="oauth_clientid">{i18n.__('client-id-label', 'podcaster-bridge')}</label>
                 </th>
                 <td>
                   <input
                     type="text"
                     value={this.state.clientCredentials.clientID || ""}
                     name="podcaster-bridge_options[oauth_clientid]"
-                    placeholder={__('client-id-placeholder')}
+                    placeholder={i18n.__('client-id-placeholder', 'podcaster-bridge')}
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
@@ -139,20 +139,20 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                     required
                   />
                   <p className="description">
-                    {__('client-id-desc')}
+                    {i18n.__('client-id-desc', 'podcaster-bridge')}
                   </p>
                 </td>
               </tr>
               <tr className="podcaster-bridge_row">
                 <th scope="row">
-                  <label htmlFor="oauth_password">{__('client-password-label')}</label>
+                  <label htmlFor="oauth_password">{i18n.__('client-password-label', 'podcaster-bridge')}</label>
                 </th>
                 <td>
                   <input
                     type="password"
                     value={this.state.clientCredentials.clientPassword || ""}
                     name="podcaster-bridge_options[oauth_password]"
-                    placeholder={__('client-password-placeholder')}
+                    placeholder={i18n.__('client-password-placeholder', 'podcaster-bridge')}
                     className="regular-text"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       this.setState({
@@ -165,7 +165,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                     disabled={this.state.saving || this.state.deleting}
                     required />
                   <p className="description">
-                    {__('client-password-desc')}
+                    {i18n.__('client-password-desc', 'podcaster-bridge')}
                   </p>
                   <div>
                     <div className="left">
@@ -179,7 +179,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                             event.preventDefault();
                             this.saveCreds();
                           }}
-                          disabled={this.state.saving || this.state.deleting}>{!this.state.saving ? __('save-button') : __('saving-button')}</button>
+                          disabled={this.state.saving || this.state.deleting}>{!this.state.saving ? i18n.__('save-button', 'podcaster-bridge') : i18n.__('saving-button', 'podcaster-bridge')}</button>
                       </p>
                     </div>
                     <div className="right">
@@ -192,7 +192,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
                           event.preventDefault();
                           this.deleteCreds()
                         }}
-                        disabled={this.state.saving || this.state.deleting}>{!this.state.deleting ? __('delete-button') : __('deleting-button')}</button>
+                        disabled={this.state.saving || this.state.deleting}>{!this.state.deleting ? i18n.__('delete-button', 'podcaster-bridge') : i18n.__('deleting-button', 'podcaster-bridge')}</button>
                     </div>
                   </div>
                 </td>
@@ -207,7 +207,7 @@ export default class OAuthCredsPage extends React.Component<Props, State> {
         <button
           className="button button-primary"
           onClick={_ => this.props.nextStep()}
-          disabled={!this.canMoveOn()}>{__('next-button')}</button>
+          disabled={!this.canMoveOn()}>{i18n.__('next-button', 'podcaster-bridge')}</button>
       </div>
     );
   }

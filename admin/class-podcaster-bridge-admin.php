@@ -117,13 +117,16 @@ class Podcaster_Bridge_Admin {
         }, ARRAY_FILTER_USE_KEY);
 
         foreach ($jsAssets as $name => $path) {
-            wp_enqueue_script(
-                $this->plugin_name . '-' . $name,
+            wp_register_script(
+                $name,
                 plugin_dir_url( __FILE__ ) . 'dist' . $path,
                 array( 'wp-i18n' ),
                 $this->version,
                 true
-            );
+			);
+			if ($name === 'main.js')
+				wp_set_script_translations($name, 'podcaster-bridge', plugin_dir_path(__FILE__) . '/../languages');
+			wp_enqueue_script($name);
         }
 	}
 
@@ -134,8 +137,8 @@ class Podcaster_Bridge_Admin {
 	 */
 	public function add_menu() {
         add_options_page(
-			__( 'service_page_title', $this->plugin_slug ),
-			__( 'service_menu_title', $this->plugin_slug ),
+			__( 'service_page_title', 'podcaster-bridge' ),
+			__( 'service_menu_title', 'podcaster-bridge' ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )

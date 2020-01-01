@@ -367,6 +367,12 @@ module.exports = function (webpackEnv) {
                       },
                     },
                   ],
+                  [
+                    require.resolve('@wordpress/babel-plugin-makepot'),
+                    {
+                      output: "languages/react-strings.pot"
+                    }
+                  ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
