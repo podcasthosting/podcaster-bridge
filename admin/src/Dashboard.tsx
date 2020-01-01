@@ -42,7 +42,7 @@ export default class Dashboard extends React.Component<Props, State> {
       if (!oauthClientCredsEmpty(adminData.oauthClientCredentials)) {
 
         // If there is an access token
-        if (!!adminData.oauthAccessToken?.trim())
+        if (!!adminData.oauthAccessToken)
           return 3; // ServicesListPage
 
         return 2; // EstablishConnectionPage
