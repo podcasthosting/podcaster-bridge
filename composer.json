@@ -20,6 +20,7 @@
         }
     ],
     "require": {
-        "podcasthosting/podcaster-sdk": "dev-master"
+        "podcasthosting/podcaster-sdk": "dev-master",
+        "ext-json": "*"
     }
 }
