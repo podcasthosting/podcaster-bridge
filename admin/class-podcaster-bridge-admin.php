@@ -74,9 +74,9 @@ class Podcaster_Bridge_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-        
+
 		// Find required stylesheets from react asset manifest
-        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);        
+        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);
         $cssAssets = array_filter($assetManifest["files"], function($key) {
             return endsWith($key, '.css');
         }, ARRAY_FILTER_USE_KEY);
@@ -111,7 +111,7 @@ class Podcaster_Bridge_Admin {
 		 */
 
         // Find required scripts from react asset manifest
-        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);        
+        $assetManifest = json_decode(file_get_contents(plugin_dir_path(__FILE__) . 'dist/asset-manifest.json'), true);
         $jsAssets = array_filter($assetManifest["files"], function($key) {
             return endsWith($key, '.js');
         }, ARRAY_FILTER_USE_KEY);
@@ -140,8 +140,8 @@ class Podcaster_Bridge_Admin {
 			__( 'service_page_title', 'podcaster-bridge' ),
 			__( 'service_menu_title', 'podcaster-bridge' ),
 			'manage_options',
-			$this->plugin_slug,
-			array( $this, 'display_plugin_admin_page' )
+            __( 'service_menu_slug', 'podcaster-bridge' ),
+			[$this, 'display_plugin_admin_page']
 		);
     }
 
@@ -195,7 +195,7 @@ class Podcaster_Bridge_Admin {
         <div id="wp-reactivate-admin"></div>
         <?php
     }
-    
+
     /**
 	 * Delete the stored OAuth Token
 	 *
@@ -224,7 +224,7 @@ class Podcaster_Bridge_Admin {
         $options = get_option('podcaster-bridge_options');
         $token = get_option('podcaster-bridge_options_oauth_token');
         if (empty($token)) {
-            // Not Failure but we need to authenticate
+            // No Failure but we need to authenticate
         } else if (!(empty($options['oauth_clientid']) || empty($options['oauth_password']))) {
             // Success
         }
@@ -239,10 +239,10 @@ class Podcaster_Bridge_Admin {
     public function ajax_save_credentials() {
         $newClientID = $_POST["clientid"];
         $newClientPassword = $_POST["clientpassword"];
-        update_option('podcaster-bridge_options', array(
+        update_option('podcaster-bridge_options', [
             'oauth_clientid' => $newClientID,
             'oauth_password' => $newClientPassword
-        ));
+        ]);
 
         wp_die();
     }
@@ -260,6 +260,7 @@ class Podcaster_Bridge_Admin {
         add_option('podcaster-bridge_options_oauth_token', $podcaster->getAccessToken()->getToken());
 
         echo "<script>window.onunload = refreshParent; function refreshParent() { window.opener.location.reload(); } window.self.close();</script>";
+        // TODO: I18N
         wp_die("Du kannst das Fenster jetzt schließen!");
     }
 }
