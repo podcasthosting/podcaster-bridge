@@ -67,10 +67,10 @@ class Podcaster_Bridge {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'PODCASTER_BRIDGE_VERSION' ) ) {
+			$this->version = PODCASTER_BRIDGE_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.1.0';
 		}
 		$this->plugin_name = 'podcaster-bridge';
 
@@ -158,7 +158,9 @@ class Podcaster_Bridge {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'add_setting' );
+		$this->loader->add_action( 'admin_head', $plugin_admin, 'pass_data' );
 		$this->loader->add_action( 'admin_post_podcaster_oauth', $plugin_admin, 'podcaster_oauth' );
+		$this->loader->add_action( 'wp_ajax_podcaster_save_credentials', $plugin_admin, 'ajax_save_credentials' );
 		$this->loader->add_action( 'wp_ajax_podcaster_oauth_connection_delete', $plugin_admin, 'cb_connection_delete' );
 		$this->loader->add_action( 'wp_ajax_podcaster_oauth_data_delete', $plugin_admin, 'cb_data_delete' );
 		#$this->loader->add_action( 'wp_ajax_podcaster_oauth_connection_test', $plugin_admin, 'podcaster_oauth_connection_test' );

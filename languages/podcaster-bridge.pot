@@ -1,115 +1,157 @@
-# Copyright (C) 2019 Podcaster Bridge
-# This file is distributed under the same license as the Podcaster Bridge package.
+# Copyright (C) 2020 podcaster
+# This file is distributed under the same license as the Podcaster Bridge plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcaster Bridge 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/podcaster-bridge\n"
-"POT-Creation-Date: 2019-04-05 16:45:22+00:00\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2020-01-01T23:55:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: podcaster-bridge\n"
 
-#: admin/class-podcaster-bridge-admin.php:104
-msgid "service_page_title"
+#: src/Dashboard.tsx:92
+msgid "settings-header"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:105
-msgid "service_menu_title"
+#: src/EstablishConnectionPage.tsx:40
+msgid "establish-connection-header"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:121
-msgid "service_section_oauth_header"
+#: src/EstablishConnectionPage.tsx:42
+msgid "establish-connection-paragraph"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:130
-msgid "service_field_oauth_clientid"
+#: src/EstablishConnectionPage.tsx:50
+msgid "establish-connection-link-text"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:145
-msgid "service_field_oauth_password"
+#: src/EstablishConnectionPage.tsx:57
+#: src/ServicesListPage.tsx:55
+msgid "back-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:159
-msgid "service_section_connection_header"
+#: src/EstablishConnectionPage.tsx:61
+#: src/OAuthCredsPage.tsx:210
+msgid "next-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:178
-msgid "service_section_services_header"
+#: src/OAuthCredsPage.tsx:112
+msgid "credentials-header"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:189
-msgid "service_section_oauth_description"
+#: src/OAuthCredsPage.tsx:115
+msgid "client-id-and-password-text-pre-link"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:200
-msgid "service_field_oauth_clientid_placeholder"
+#: src/OAuthCredsPage.tsx:115
+msgid "client-id-and-password-text-link"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:202
-msgid "service_field_oauth_clientid_description"
+#: src/OAuthCredsPage.tsx:121
+msgid "client-id-label"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:213
-msgid "service_field_oauth_password_placeholder"
+#: src/OAuthCredsPage.tsx:128
+msgid "client-id-placeholder"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:215
-msgid "service_field_oauth_password_description"
+#: src/OAuthCredsPage.tsx:142
+msgid "client-id-desc"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:220
-msgid "button_save_settings"
+#: src/OAuthCredsPage.tsx:148
+msgid "client-password-label"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:222
-msgid "button_delete_settings"
+#: src/OAuthCredsPage.tsx:155
+msgid "client-password-placeholder"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:231
-msgid "service_hint_connection"
+#: src/OAuthCredsPage.tsx:168
+msgid "client-password-desc"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:243
-msgid "service_oauth_button_connection_test"
+#: src/OAuthCredsPage.tsx:182
+msgid "save-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:247
-msgid "service_oauth_connection_success"
+#: src/OAuthCredsPage.tsx:182
+msgid "saving-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:247
-msgid "service_oauth_connection_delete"
+#: src/OAuthCredsPage.tsx:195
+msgid "delete-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:247
-msgid "service_terminate_connection"
+#: src/OAuthCredsPage.tsx:195
+msgid "deleting-button"
 msgstr ""
 
-#: admin/class-podcaster-bridge-admin.php:256
-msgid "service_hint_services"
+#: src/ServicesListPage.tsx:43
+msgid "services-header"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
+#: src/ServicesListPage.tsx:45
+msgid "services-paragraph"
+msgstr ""
+
+#: src/ServicesListPage.tsx:48
+msgid "User information"
+msgstr ""
+
+#: src/ServicesListPage.tsx:49
+msgid "Stored files"
+msgstr ""
+
+#: src/ServicesListPage.tsx:50
+msgid "Feeds"
+msgstr ""
+
+#: src/ServicesListPage.tsx:51
+msgid "Shows"
+msgstr ""
+
+#: src/WelcomePage.tsx:35
+msgid "welcome-header"
+msgstr ""
+
+#: src/WelcomePage.tsx:37
+msgid "welcome-paragraph"
+msgstr ""
+
+#: src/WelcomePage.tsx:41
+msgid "get-started"
+msgstr ""
+
+#. Plugin Name of the plugin
 msgid "Podcaster Bridge"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://github.com/podcasthosting/podcaster-bridge"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"Connects a customer to its podcaster account to access data in a WordPress "
-"installation."
+#. Description of the plugin
+msgid "Connects a customer to its podcaster account to access data in a WordPress installation."
 msgstr ""
 
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "podcaster"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://www.podcaster.de"
+msgstr ""
+
+#: admin/class-podcaster-bridge-admin.php:140
+msgid "service_page_title"
+msgstr ""
+
+#: admin/class-podcaster-bridge-admin.php:141
+msgid "service_menu_title"
 msgstr ""
