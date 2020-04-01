@@ -49,7 +49,7 @@ export default class EstablishConnectionPage extends React.Component<Props, Stat
               <th scope="row" />
               <td>
                 <span className="dashicons-before dashicons-warning" />
-                <a href="http://podcaster.dev.aidanlovelace.com/wp-admin/admin-post.php?action=podcaster_oauth" target="_blank" rel="noopener noreferrer">{__('establish-connection-link-text', 'podcaster-bridge')}</a>
+                <a href="/wp-admin/admin-post.php?action=podcaster_oauth" target="_blank" rel="noopener noreferrer">{__('establish-connection-link-text', 'podcaster-bridge')}</a>
               </td>
             </tr>
           </tbody>
